@@ -3,52 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400&family=Oxygen:wght@400&display=swap"
+    rel="stylesheet">
   <title>Escape.</title>
 </head>
 <body>
-  <header>
-    <div>
-      <span>Escape.</span>
-      <nav>
-        <a href="#">HOME</a>
-        <a href="#">CATEGORIES</a>
-        <a href="#">ABOUT</a>
-        <a href="#">CONTACT</a>
+  <header class="header">
+    <div class="header__row">
+      <img src="./images/logo.svg" alt="logo">
+      <nav class="navigation">
+        <a class="navigation__link" href="#">Home</a>
+        <a class="navigation__link" href="#">Categories</a>
+        <a class="navigation__link" href="#">About</a>
+        <a class="navigation__link" href="#">Contact</a>
       </nav>
     </div>
-    <h1>Let's do it together.</h1>
-    <p>We travel the world in search of stories. Come along for the ride.</p>
-    <button>View Latest Posts</button>
+    <h1 class="header__title">Let's do it together.</h1>
+    <p class="header__subtitle">We travel the world in search of stories. Come along for the ride.</p>
+    <button class="header__button">View Latest Posts</button>
   </header>
-  <main>
+  <main class="main">
     <nav>
-      <a href="">Nature</a>
-      <a href="">Photography</a>
-      <a href="">Relaxation</a>
-      <a href="">Vacation</a>
-      <a href="">Travel</a>
-      <a href="">Adventure</a>
+      <a href="#">Nature</a>
+      <a href="#">Photography</a>
+      <a href="#">Relaxation</a>
+      <a href="#">Vacation</a>
+      <a href="#">Travel</a>
+      <a href="#">Adventure</a>
     </nav>
     <section>
       <h2>Featured Posts</h2>
       <div>
-        <h4>The Road Ahead</h4>
-        <p>The road ahead might be paved - it might not be.</p>
         <div>
-          <img src="./images/mat.jpg" alt="mat">
-          <span>Mat Vogels</span>
-          <span>September 25, 2015</span>
+          <img src="./images/light.jpg" alt="light">
+          <h4>The Road Ahead</h4>
+          <p>The road ahead might be paved - it might not be.</p>
+          <div>
+            <img src="./images/mat.jpg" alt="mat">
+            <span>Mat Vogels</span>
+            <span>September 25, 2015</span>
+          </div>
         </div>
-      </div>
-      <div>
-        <span>Adventure</span>
-        <h4>From Top Down</h4>
-        <p>Once a year, go someplace you've never been before.</p>
         <div>
-          <img src="./images/william.jpg" alt="william">
-          <span>William Wong</span>
-          <span>September 25, 2015</span>
+          <img src="./images/balloon.jpg" alt="balloon">
+          <span>Adventure</span>
+          <h4>From Top Down</h4>
+          <p>Once a year, go someplace you've never been before.</p>
+          <div>
+            <img src="./images/william.jpg" alt="william">
+            <span>William Wong</span>
+            <span>September 25, 2015</span>
+          </div>
         </div>
       </div>
     </section>
@@ -67,7 +72,7 @@
       <div>
         <img src="./images/bridge.jpg" alt="bridge">
         <h5>Sunny Side Up</h5>
-        <p>No place is ever as bad as they tell you it’s going to be.</p>
+        <p>No place is ever as bad as they tell you it's going to be.</p>
         <div>
           <img src="./images/mat.jpg" alt="mat">
           <span>Mat Vogels</span>
@@ -117,7 +122,7 @@
     </section>
   </main>
   <footer>
-    <span>Escape.</span>
+    <img src="./images/logo.svg" alt="logo">
     <nav>
       <a href="#">HOME</a>
       <a href="#">CATEGORIES</a>
