@@ -1,75 +1,7 @@
 *
 {
     margin: 0;
-	padding: 0;
+	  padding: 0;
     box-sizing: border-box;
     outline: none; 
-}
-
-.header
-{
-    padding: 17px 0 157px 0;
-    width: 100%;
-    background: url('../images/mountains.jpg');
-    background-size: cover;
-}
-
-.wrapper
-{
-    margin: 0 auto;
-    width: 940px
-}
-
-.header_row
-{
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 120px;
-}
-
-.navigation
-{
-    width: 380px;
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.navigation__link
-{
-    color: #ffffff;
-    font: 12pt/20pt 'Oxygen', sans-serif;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-.header__title
-{
-    color: #ffffff;
-    letter-spacing: 2px;
-    text-align: center;
-    font: 50pt/51pt 'Lora', serif;
-    margin-bottom: 20px;
-}
-
-.header__subtitle
-{
-    text-align: center;
-    color: rgba(255, 255, 255, 0.63);
-    font: 17pt/1.18 'Oxygen', sans-serif;
-    margin-bottom: 31px;
-}
-
-.header__button
-{
-    padding: 12px 31px;
-    font: 13pt/1.45 'Oxygen', sans-serif;
-    color: #ffffff;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    background: #DD783F;
-    border:none;
-    border-radius: 3px;
 }
