@@ -12,11 +12,11 @@
   <header class="header">
     <div class="header__row">
       <img src="./images/logo.svg" alt="logo">
-      <nav class="header-nav">
-        <a class="header-nav__item" href="#">Home</a>
-        <a class="header-nav__item" href="#">Categories</a>
-        <a class="header-nav__item" href="#">About</a>
-        <a class="header-nav__item" href="#">Contact</a>
+      <nav class="nav nav_header">
+        <a class="nav__item" href="#">Home</a>
+        <a class="nav__item" href="#">Categories</a>
+        <a class="nav__item" href="#">About</a>
+        <a class="nav__item" href="#">Contact</a>
       </nav>
     </div>
     <h1 class="header__title">Let's do it together.</h1>
@@ -24,111 +24,107 @@
     <button class="header__button">View Latest Posts</button>
   </header>
   <main class="main">
-    <nav>
-      <a href="#">Nature</a>
-      <a href="#">Photography</a>
-      <a href="#">Relaxation</a>
-      <a href="#">Vacation</a>
-      <a href="#">Travel</a>
-      <a href="#">Adventure</a>
+    <nav class="main-nav">
+      <a class="main-nav__item" href="#">Nature</a>
+      <a class="main-nav__item" href="#">Photography</a>
+      <a class="main-nav__item" href="#">Relaxation</a>
+      <a class="main-nav__item" href="#">Vacation</a>
+      <a class="main-nav__item" href="#">Travel</a>
+      <a class="main-nav__item" href="#">Adventure</a>
     </nav>
-    <section>
-      <h2>Featured Posts</h2>
-      <div>
-        <div>
-          <img src="./images/light.jpg" alt="light">
-          <h4>The Road Ahead</h4>
-          <p>The road ahead might be paved - it might not be.</p>
-          <div>
-            <img src="./images/mat.jpg" alt="mat">
-            <span>Mat Vogels</span>
-            <span>September 25, 2015</span>
-          </div>
+    <section class="main-section featured-posts">
+      <h2 class="main-section__title">Featured Posts</h2>
+      <div class="featured-posts__card featured-posts-card card-light">
+        <h4 class="featured-posts-card__title">The Road Ahead</h4>
+        <p class="featured-posts-card__subtitle">The road ahead might be paved - it might not be.</p>
+        <div class="about about_transparent">
+          <img class="about__photo" src="./images/mat.jpg" alt="mat">
+          <span class="about__name">Mat Vogels</span>
+          <span class="about__date">September 25, 2015</span>
         </div>
-        <div>
-          <img src="./images/balloon.jpg" alt="balloon">
-          <span>Adventure</span>
-          <h4>From Top Down</h4>
-          <p>Once a year, go someplace you've never been before.</p>
-          <div>
-            <img src="./images/william.jpg" alt="william">
-            <span>William Wong</span>
-            <span>September 25, 2015</span>
-          </div>
+      </div>
+      <div class="featured-posts__card featured-posts-card card-balloon">
+        <span class="featured-posts-card__label">Adventure</span>
+        <h4 class="featured-posts-card__title">From Top Down</h4>
+        <p class="featured-posts-card__subtitle">Once a year, go someplace you've never been before.</p>
+        <div class="about about_transparent">
+          <img class="about__photo" src="./images/william.jpg" alt="william">
+          <span class="about__name">William Wong</span>
+          <span class="about__date">September 25, 2015</span>
         </div>
       </div>
     </section>
-    <section>
-      <h2>Most Recent</h2>
-      <div>
-        <img src="./images/balloons.jpg" alt="balloons">
-        <h5>Still Standing Tall</h5>
-        <p>Life begins at the end of your comfort zone.</p>
-        <div>
+    <section class="main-section most-recent">
+      <h2 class="main-section__title">Most Recent</h2>
+      <div class="most-recent__card most-recent-card">
+        <img class="most-recent-image" src="./images/balloons.jpg" alt="balloons">
+        <h5 class="most-recent-card__title">Still Standing Tall</h5>
+        <p class="most-recent-card__subtitle">Life begins at the end of your comfort zone.</p>
+        <div class="most-recent__about about">
           <img src="./images/william.jpg" alt="william">
-          <span>William Wong</span>
-          <span>9/25/2015</span>
+          <span class="about__name">William Wong</span>
+          <span class="about__date">9/25/2015</span>
         </div>
       </div>
-      <div>
-        <img src="./images/bridge.jpg" alt="bridge">
-        <h5>Sunny Side Up</h5>
-        <p>No place is ever as bad as they tell you it's going to be.</p>
-        <div>
+      <div class="most-recent__card most-recent-card">
+        <img class="most-recent-image" src="./images/bridge.jpg" alt="bridge">
+        <h5 class="most-recent-card__title">Sunny Side Up</h5>
+        <p class="most-recent-card__subtitle">No place is ever as bad as they tell you it's going to be.</p>
+        <div class="most-recent__about about">
           <img src="./images/mat.jpg" alt="mat">
-          <span>Mat Vogels</span>
-          <span>9/25/2015</span>
+          <span class="about__name">Mat Vogels</span>
+          <span class="about__date">9/25/2015</span>
         </div>
       </div>
-      <div>
-        <img src="./images/river.jpg" alt="river">
-        <h5>Still Standing Tall</h5>
-        <p>Life begins at the end of your comfort zone.</p>
-        <div>
+      <div class="most-recent__card most-recent-card">
+        <img class="most-recent-image" src="./images/river.jpg" alt="river">
+        <h5 class="most-recent-card__title">Water Falls</h5>
+        <p class="most-recent-card__subtitle">We travel not to escape life, but for life not to escape us.</p>
+        <div class="most-recent__about about">
           <img src="./images/mat.jpg" alt="mat">
-          <span>Mat Vogels</span>
-          <span>9/25/2015</span>
+          <span class="about__name">Mat Vogels</span>
+          <span class="about__date">9/25/2015</span>
         </div>
       </div>
-      <div>
-        <img src="./images/sea.jpg" alt="sea">
-        <h5>Through the Mist</h5>
-        <p>Travel makes you see what a tiny place you occupy in the world.</p>
-        <div>
+      <div class="most-recent__card most-recent-card">
+        <img class="most-recent-image" src="./images/sea.jpg" alt="sea">
+        <h5 class="most-recent-card__title">Through the Mist</h5>
+        <p class="most-recent-card__subtitle">Travel makes you see what a tiny place you occupy in the world.</p>
+        <div class="most-recent__about about">
           <img src="./images/william.jpg" alt="william">
-          <span>William Wong</span>
-          <span>9/25/2015</span>
+          <span class="about__name">William Wong</span>
+          <span class="about__date">9/25/2015</span>
         </div>
       </div>
-      <div>
-        <img src="./images/wires.jpg" alt="wires">
-        <h5>Awaken Early</h5>
-        <p>Not all those who wander are lost.</p>
-        <div>
+      <div class="most-recent__card most-recent-card">
+        <img class="most-recent-image" src="./images/wires.jpg" alt="wires">
+        <h5 class="most-recent-card__title">Awaken Early</h5>
+        <p class="most-recent-card__subtitle">Not all those who wander are lost.</p>
+        <div class="most-recent__about about">
           <img src="./images/mat.jpg" alt="mat">
-          <span>Mat Vogels</span>
-          <span>9/25/2015</span>
+          <span class="about__name">Mat Vogels</span>
+          <span class="about__date">9/25/2015</span>
         </div>
       </div>
-      <div>
-        <img src="./images/waterfall.jpg" alt="waterfall">
-        <h5>Still Standing Tall</h5>
-        <p>Life begins at the end of your comfort zone.</p>
-        <div>
+      <div class="most-recent__card most-recent-card">
+        <img class="most-recent-image" src="./images/waterfall.jpg" alt="waterfall">
+        <h5 class="most-recent-card__title">Try it Always</h5>
+        <p class="most-recent-card__subtitle">The world is a book, and those who do not travel read only one page.</p>
+        <div class="most-recent__about about">
           <img src="./images/mat.jpg" alt="mat">
-          <span>Mat Vogels</span>
-          <span>9/25/2015</span>
+          <span class="about__name">Mat Vogels</span>
+          <span class="about__date">9/25/2015</span>
         </div>
       </div>
     </section>
   </main>
-  <footer>
+  <footer class="footer">
     <img src="./images/logo.svg" alt="logo">
-    <nav>
-      <a href="#">HOME</a>
-      <a href="#">CATEGORIES</a>
-      <a href="#">ABOUT</a>
-      <a href="#">CONTACT</a>
+    <nav class="nav nav_footer">
+      <a class="nav__item" href="#">HOME</a>
+      <a class="nav__item" href="#">CATEGORIES</a>
+      <a class="nav__item" href="#">ABOUT</a>
+      <a class="nav__item" href="#">CONTACT</a>
     </nav>
   </footer>
 </body>
