@@ -1,0 +1,115 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.header
+{
+    max-width: 100%;
+}
+
+.header__row
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 980px;
+    margin: 0px auto 82px auto;
+    padding: 24px 20px;
+}
+
+.nav_header
+{
+    font: 12px/1.66 'Oxygen', sans-serif;
+}
+
+.nav_footer
+{
+    font: 11px/1.66 'Oxygen', sans-serif;
+}
+
+.nav__item
+{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #2E2E2E;
+}
+
+.nav__item_footer
+{
+    color: #ffffff;
+}
+
+.nav_header .nav__item
+{
+    margin: 0 19px;
+    letter-spacing: 0.6px;
+}
+
+.nav_footer .nav__item
+{
+    letter-spacing: 1px;
+}
+
+.nav_footer .nav__item:not(:last-child)
+{
+    margin-right: 18px;
+}
+
+.header__title
+{
+    font: 50px/1 'Lora', serif;
+    letter-spacing: 2px;
+    color: #2E2E2E;
+    text-align: center;
+    margin-bottom: 21px;
+}
+
+.header__subtitle
+{
+    font: 17px/1.18 'Oxygen', sans-serif;
+    color: rgba(46, 46, 46, 0.63);
+    text-align: center;
+    margin-bottom: 113px;
+}
+
+.main__image
+{
+  width: 100%;
+  height: 534px;
+  margin-bottom: 140px;
+}
+
+.main__text
+{
+  max-width: 940px;
+  margin: 0 auto;
+  font: 24px/1.45 'Oxygen', sans-serif;
+  color: #101315;
+  margin-bottom: 50px;
+}
+
+.main__text:last-child
+{
+  margin-bottom: 180px;
+}
+
+
+.footer
+{
+    background: url('../images/mountains-blur.jpg') no-repeat;
+    background-size: cover;
+}
+
+.footer__row
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 31px 20px;
+    max-width: 980px;
+    margin: 0 auto;
+}
