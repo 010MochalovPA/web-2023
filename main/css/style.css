@@ -95,7 +95,6 @@
 .main-nav
 {
     background: #ffffff;
-    padding: 22px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,6 +103,7 @@
 
 .main-nav__item
 {
+    padding: 22px 0;
     flex-basis: 140px;
     text-align: center;
     text-decoration: none;
@@ -144,12 +144,12 @@
 .featured-posts
 {
     column-gap: 20px;
+    row-gap: 24px;
     margin-bottom: 7px;
 }
 
 .featured-posts__card
 {
-    margin-top: 24px;
     flex-basis: 460px;
 }
 
@@ -159,6 +159,20 @@
     max-width: 460px;
     border-radius: 3px;
     padding: 158px 20px 15px 20px;
+}
+
+.featured-posts-card_adventure::before 
+{
+    content: 'adventure';
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    text-transform: uppercase;
+    font: 12px/1.1 'Oxygen', sans-serif;
+    color: #ffffff;
+    background: #dd783f;
+    padding: 7px 9px;
+    border-radius: 2px;
 }
 
 .card-light
@@ -178,19 +192,6 @@
     font: 27px/1.11 'Lora', serif;
     color: #ffffff;
     margin-bottom: 6px;
-}
-
-.featured-posts-card__label
-{
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    text-transform: uppercase;
-    font: 12px/1.1 'Oxygen', sans-serif;
-    color: #ffffff;
-    background: #dd783f;
-    padding: 7px 9px;
-    border-radius: 2px;
 }
 
 .featured-posts-card__subtitle
@@ -241,12 +242,11 @@
 
 .most-recent
 {
-    column-gap: 24px;
+    gap: 24px;  
 }
 
 .most-recent__card
 {
-    margin-top: 24px;
     flex-basis: 296px;
 }
 
