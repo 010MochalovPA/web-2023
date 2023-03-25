@@ -8,6 +8,7 @@
 
 .header
 {
+    padding: 24px 0 112px 0;
     max-width: 100%;
 }
 
@@ -17,18 +18,25 @@
     justify-content: space-between;
     align-items: center;
     max-width: 980px;
-    margin: 0px auto 82px auto;
-    padding: 24px 20px;
+    margin: 0px auto 102px auto;
+}
+
+.nav
+{
+    font: 12px/1.66 'Oxygen', sans-serif;
+    display: flex;
 }
 
 .nav_header
 {
-    font: 12px/1.66 'Oxygen', sans-serif;
+    gap: 19px;
 }
 
 .nav_footer
 {
     font: 11px/1.66 'Oxygen', sans-serif;
+    display: flex;
+    gap: 19px;
 }
 
 .nav__item
@@ -38,25 +46,14 @@
     color: #2E2E2E;
 }
 
-.nav__item_footer
+.nav_footer > .nav__item
 {
     color: #ffffff;
-}
-
-.nav_header .nav__item
-{
-    margin: 0 19px;
-    letter-spacing: 0.6px;
 }
 
 .nav_footer .nav__item
 {
     letter-spacing: 1px;
-}
-
-.nav_footer .nav__item:not(:last-child)
-{
-    margin-right: 18px;
 }
 
 .header__title
@@ -73,7 +70,6 @@
     font: 17px/1.18 'Oxygen', sans-serif;
     color: rgba(46, 46, 46, 0.63);
     text-align: center;
-    margin-bottom: 113px;
 }
 
 .main__image
@@ -97,19 +93,83 @@
   margin-bottom: 180px;
 }
 
+.underlined-title
+{
+    width: 100%;
+    font: 20px/1.35 'Oxygen', sans-serif;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.underlined-title_light
+{
+    color: #EFEFEF;
+}
+
+.underlined-title::after
+{
+    content: '';
+    display: block;
+    margin: 0 auto;
+    max-width: 188px;
+    height: 1px;
+    background: #dedede;
+    margin-top: 16px;
+}
 
 .footer
 {
+    padding-top: 81px;
     background: url('../images/mountains-blur.jpg') no-repeat;
     background-size: cover;
 }
 
-.footer__row
+.contact-form
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto 89px auto;
+    max-width: 500px;
+    font: 12px/1.1 'Roboto', sans-serif;
+}
+
+.contact-form__field
+{
+    width: 75%;
+    padding: 18px 35px;
+    border: none;
+    background: #FFFFFF;
+    border-radius: 3px 0 0 3px;
+}
+
+.contact-form__field::placeholder
+{
+    color: #817F83;
+    font: 12px/1.1 'Roboto', sans-serif;
+}
+
+.contact-form__button
+{
+    width: 25%;
+    border: none;
+    background: rgba(255, 255, 255, 0.28);
+    border-radius: 0 3px 3px 0;
+    color: #F8F8F8;
+}
+
+.footer-wrapper
 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 31px 20px;
     max-width: 980px;
     margin: 0 auto;
+    padding: 31px 20px;
+}
+
+.footer__row
+{
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(35, 47, 56, 0.6);
 }

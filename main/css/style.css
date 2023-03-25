@@ -298,13 +298,13 @@
     flex: 1 1 auto;
 }
 
-.most-recent__about
+.small-card__about
 {
     border-top: 1px solid #EFEFEF;
     padding: 7px 13px;
 }
 
-.most-recent-image
+.small-card-image
 {
     display: block;
 }
@@ -332,7 +332,7 @@
     padding: 18px 35px;
     border: none;
     background: #FFFFFF;
-    border-radius: 3px 0px 0px 3px;
+    border-radius: 3px 0 0 3px;
 }
 
 .contact-form__field::placeholder
@@ -346,7 +346,7 @@
     width: 25%;
     border: none;
     background: rgba(255, 255, 255, 0.28);
-    border-radius: 0px 3px 3px 0px;
+    border-radius: 0 3px 3px 0;
     color: #F8F8F8;
 }
 
