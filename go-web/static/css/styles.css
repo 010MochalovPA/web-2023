@@ -1,0 +1,89 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.header
+{
+    max-width: 100%;
+    background: url('../images/mountains.jpg') no-repeat;
+    background-size: cover;
+    padding-bottom: 157px;
+    padding-top: 24px;
+}
+
+.header__row
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 980px;
+    margin: 0 auto 128px auto;
+    padding: 0 20px;
+}
+
+.nav_header
+{
+    font: 12px/1.66 'Oxygen', sans-serif;
+    display: flex;
+    margin-right: 20px;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav_footer
+{
+    font: 11px/1.66 'Oxygen', sans-serif;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav__item
+{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.nav_header .nav__item
+{
+    letter-spacing: 0.6px;
+}
+
+.nav_footer .nav__item
+{
+    letter-spacing: 1px;
+}
+
+.header__title
+{
+    font: 50px/1 'Lora', serif;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 21px;
+}
+
+.header__subtitle
+{
+    font: 17px/1.18 'Oxygen', sans-serif;
+    color: rgba(255, 255, 255, 0.63);
+    text-align: center;
+    margin-bottom: 31px;
+}
+
+.header__button
+{
+    display: block;
+    padding: 12px 33px;
+    margin: 0 auto;
+    font: 13px/1.53 'Oxygen', sans-serif;
+    background: #dd783f;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+}

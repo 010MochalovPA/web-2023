@@ -2,35 +2,50 @@ package main
 
 import (
 	"html/template"
-	"log"
 	"net/http"
 )
 
-type indexPageData struct {
-	Title    string
-	Subtitle string
+type linkData struct {
+	Title string
+}
+
+type linksData struct {
+	Links []linkData
+}
+
+func links() []linkData {
+	return []linkData{
+		{
+			Title: "Home",
+		},
+		{
+			Title: "Categories",
+		},
+		{
+			Title: "About",
+		},
+		{
+			Title: "Contact",
+		},
+	}
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	ts, err := template.ParseFiles("pages/index.html")
+	tmpl, err := template.ParseFiles("pages/index.html")
 
 	if err != nil {
 		http.Error(w, "Internal Server Error", 500)
-		log.Println(err)
 		return
 	}
 
-	data := indexPageData{
-		Title:    "Blog for traveling",
-		Subtitle: "Subtitle for my page",
+	links := linksData{
+		Links: links(),
 	}
 
-	err = ts.Execute(w, data)
+	err = tmpl.Execute(w, links)
+
 	if err != nil {
 		http.Error(w, "Internal Server Error", 500)
-		log.Println(err)
 		return
 	}
-
-	log.Println("Request complited successfully")
 }
