@@ -185,7 +185,7 @@ func getMostRecent() []mostRecentData {
 	}
 }
 
-func index(w http.ResponseWriter, r *http.Request) {
+func index(w http.ResponseWriter, _ *http.Request) {
 	tmpl, err := template.ParseFiles("pages/index.html")
 
 	if err != nil {
@@ -209,7 +209,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func post(w http.ResponseWriter, r *http.Request) {
+func post(w http.ResponseWriter, _ *http.Request) {
 	tmpl, err := template.ParseFiles("pages/post.html")
 
 	if err != nil {
