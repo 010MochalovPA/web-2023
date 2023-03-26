@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400&family=Oxygen:wght@400&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <title>{{ .Title }}</title>
+</head>
+<body>
+  <header class="header header_background header_home">
+    <div class="row header__row">
+      <img src="/static/img/logo-white.svg" alt="logo-white">
+      <nav class="nav nav_header nav_light">
+        {{ range .PrimaryLinks }}
+        <a class="nav__item" href="{{ .Url }}">{{ .Title }}</a>
+        {{ end }}
+      </nav>
+    </div>
+    <h1 class="primary-title primary-title_light">Let's do it together.</h1>
+    <p class="primary-subtitle">We travel the world in search of stories. Come along for the ride.</p>
+    <button class="primary-button">View Latest Posts</button>
+  </header>
+  <main class="main">
+    <nav class="main-nav">
+      {{ range .SecondaryLinks }}
+      <a class="main-nav__item" href="{{ .Url }}">{{ .Title }}</a>
+      {{ end}}
+    </nav>
+    <section class="main-section featured-posts">
+      <h2 class="secondary-title secondary-title_dark">Featured Posts</h2>
+      {{ range .FeaturedPosts}}
+      <div class="featured-posts__card large-card {{ .ImgModifier }}">
+        {{ if .Label }}
+          <span class="large-card__label">{{ .Label }}</span>
+        {{ end}}
+        <h4 class="large-card__title">{{ .Title }}</h4>
+        <p class="large-card__subtitle">{{ .Subtitle }}</p>
+        <div class="about about_transparent">
+          <img class="about__photo" src="{{ .AuthorImg }}" alt="{{ .Author }}">
+          <span class="about__name">{{ .Author }}</span>
+          <span class="about__date">{{ .PublishDate }}</span>
+        </div>
+      </div>
+      {{ end }}
+    </section>
+    <section class="main-section most-recent">
+      <h2 class="secondary-title secondary-title_dark">Most Recent</h2>
+      {{ range .MostRecent}}
+      <div class="most-recent__card small-card">
+        <img class="small-card-image" src="{{ .CardImg }}" alt="{{ .Title }}">
+        <h5 class="small-card__title">{{ .Title }}</h5>
+        <p class="small-card__subtitle">{{ .Subtitle }}</p>
+        <div class="about about_small-card">
+          <img class="about__photo" src="{{ .AuthorImg }}" alt="{{ .Author }}">
+          <span class="about__name">{{ .Author }}</span>
+          <span class="about__date">{{ .PublishDate }}</span>
+        </div>
+      </div>
+      {{ end }}
+    </section>
+  </main>
+  <footer class="footer">
+    <h2 class="secondary-title secondary-title_light secondary-title_large">Stay in Touch</h2>
+    <form class="contact-form" action="#">
+      <input class="contact-form__field" type="text" placeholder="Enter your email address">
+      <button class="contact-form__button" type="submit">Submit</button>
+    </form>
+    <div class="footer-wrapper">
+      <div class="footer__row row">
+        <img src="/static/img/logo-white.svg" alt="logo-white">
+        <nav class="nav nav_footer">
+          {{ range .PrimaryLinks }}
+          <a class="nav__item" href="{{ .Url }}">{{ .Title }}</a>
+          {{ end }}
+        </nav>
+      </div>
+    </div> 
+  </footer>
+</body>
+</html>

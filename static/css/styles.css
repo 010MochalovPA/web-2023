@@ -1,0 +1,366 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.header_background {
+  background: url('/static/img/mountains.jpg') no-repeat;
+}
+
+.header_home {
+  padding-bottom: 157px;
+}
+
+.header_post {
+  padding-bottom: 113px;
+}
+
+.header {
+  max-width: 100%;
+  background-size: cover;
+  padding-top: 24px;
+}
+
+.header__row {
+  max-width: 980px;
+  margin: 0 auto 128px auto;
+  padding: 0 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav_header {
+  font: 12px/1.66 'Oxygen', sans-serif;
+  margin-right: 20px;
+  gap: 40px;
+}
+
+.nav_footer {
+  font: 11px/1.66 'Oxygen', sans-serif;
+  gap: 20px;
+}
+
+.nav__item {
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav_dark .nav__item {
+  color: #2E2E2E;
+}
+
+.nav_light .nav__item {
+  color: #ffffff;
+}
+
+.nav_header .nav__item {
+  letter-spacing: 0.6px;
+}
+
+.nav_footer .nav__item {
+  letter-spacing: 1px;
+}
+
+.primary-title {
+  font: 50px/1 'Lora', serif;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 21px;
+}
+
+.primary-title_dark {
+  color: #2E2E2E;
+}
+
+.primary-title_light {
+  color: #ffffff;
+}
+
+.primary-subtitle {
+  font: 17px/1.18 'Oxygen', sans-serif;
+  color: rgba(255, 255, 255, 0.63);
+  text-align: center;
+  margin-bottom: 31px;
+}
+
+.primary-subtitle_light {
+  color: rgba(255, 255, 255, 0.63);
+}
+
+.primary-subtitle_dark {
+  color: rgba(46, 46, 46, 0.63);
+}
+
+.primary-button {
+  display: block;
+  padding: 12px 33px;
+  margin: 0 auto;
+  font: 13px/1.53 'Oxygen', sans-serif;
+  background: #dd783f;
+  border: none;
+  border-radius: 3px;
+  color: #ffffff;
+}
+
+.main {
+  background: #f7f7f7;
+  padding-bottom: 108px;
+}
+
+.post {
+  padding-bottom: 135px;
+}
+
+.post__image
+{
+  width: 100%;
+  max-height: 534px;
+  margin-bottom: 140px;
+}
+
+.post__text
+{
+  max-width: 940px;
+  margin: 0 auto;
+  font: 24px/1.45 'Oxygen', sans-serif;
+  color: #101315;
+  margin-bottom: 50px;
+}
+
+.main-nav {
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.main-nav__item {
+  padding: 22px 0;
+  flex-basis: 140px;
+  text-align: center;
+  text-decoration: none;
+  font: 14px/1.42 'Lora', serif;
+  color: #768088;
+}
+
+
+.main-section {
+  display: flex;
+  justify-content: center;
+  max-width: 940px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  row-gap: 24px;
+}
+
+.secondary-title {
+  width: 100%;
+  font: 20px/1.35 'Oxygen', sans-serif;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.secondary-title_dark {
+  color: #2e2e2e;
+}
+
+.secondary-title_large {
+  font: 25px/1.2 'Oxygen', sans-serif;
+  letter-spacing: 0;
+}
+
+.secondary-title_light {
+  color: #EFEFEF;
+}
+
+.secondary-title::after {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  max-width: 188px;
+  height: 1px;
+  background: #dedede;
+  margin-top: 16px;
+}
+
+.featured-posts {
+  column-gap: 20px;
+  margin-bottom: 67px;
+}
+
+.featured-posts__card {
+  flex-basis: 460px;
+}
+
+.large-card {
+  position: relative;
+  max-width: 460px;
+  border-radius: 3px;
+  padding: 158px 20px 15px 20px;
+}
+
+.featured-posts_light-image {
+  background: url('../img/light.jpg') no-repeat;
+  background-size: cover;
+}
+
+.featured-posts_balloon-image {
+  background: url('../img/balloon.jpg') no-repeat;
+  background-size: cover;
+}
+
+.large-card__title {
+  font: 27px/1.11 'Lora', serif;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.large-card__label {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  text-transform: uppercase;
+  font: 12px/1.1 'Oxygen', sans-serif;
+  color: #ffffff;
+  background: #dd783f;
+  padding: 7px 9px;
+  border-radius: 2px;
+}
+
+.large-card__subtitle {
+  font: 14px/1.78 'Oxygen', sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 12px;
+}
+
+.large-card__about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 12px/2.91 'Oxygen', sans-serif;
+  color: #999999;
+}
+
+.about {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 12px/2.9 'Oxygen', sans-serif;
+  color: #999999;
+}
+
+.about__photo {
+  border-radius: 50%;
+}
+
+.about_transparent {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.about__date {
+  text-align: end;
+  flex: 1 1 auto;
+}
+
+.most-recent {
+  gap: 24px;
+}
+
+.most-recent__card {
+  flex-basis: 296px;
+}
+
+.small-card {
+  background: #ffffff;
+  max-width: 296px;
+  display: flex;
+  flex-direction: column;
+}
+
+.small-card__title {
+  color: #101315;
+  font: 16px/1.31 'Lora', serif;
+  margin: 13px 0 0 13px;
+}
+
+.small-card__subtitle {
+  color: #7A7A7A;
+  font: 13px/1.46 'Oxygen', sans-serif;
+  margin: 6px 13px 12px 13px;
+  flex: 1 1 auto;
+}
+
+.about_small-card {
+  border-top: 1px solid #EFEFEF;
+  padding: 7px 13px;
+}
+
+.small-card-image {
+  display: block;
+}
+
+.footer {
+  padding-top: 81px;
+  background: url('../img/mountains-footer.jpg') no-repeat;
+  background-size: cover;
+}
+
+.contact-form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 20px auto 89px auto;
+  max-width: 500px;
+  font: 12px/1.1 'Roboto', sans-serif;
+}
+
+.contact-form__field {
+  width: 75%;
+  padding: 18px 35px;
+  border: none;
+  background: #FFFFFF;
+  border-radius: 3px 0 0 3px;
+}
+
+.contact-form__field::placeholder {
+  color: #817F83;
+  font: 12px/1.1 'Roboto', sans-serif;
+}
+
+.contact-form__button {
+  width: 25%;
+  border: none;
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 0 3px 3px 0;
+  color: #F8F8F8;
+}
+
+.footer-wrapper {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(35, 47, 56, 0.6);
+}
+
+.footer__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 31px 20px;
+
+}

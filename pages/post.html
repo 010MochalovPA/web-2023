@@ -4,28 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400&family=Oxygen:wght@400&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./css/style.css">
-  <title>Escape.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400&family=Oxygen:wght@400&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <title>{{ .Title }}</title>
 </head>
 <body>
-  <header class="header">
-    <div class="header__row">
-      <img src="./images/logo-black.svg" alt="logo-black">
-      <nav class="nav nav_header">
-        <a class="nav__item" href="#">Home</a>
-        <a class="nav__item" href="#">Categories</a>
-        <a class="nav__item" href="#">About</a>
-        <a class="nav__item" href="#">Contact</a>
+  <header class="header header_post">
+    <div class="row header__row">
+      <img src="/static/img/logo-black.svg" alt="logo-black">
+      <nav class="nav nav_header nav_dark">
+        {{ range .PrimaryLinks}}
+          <a class="nav__item" href="#">{{ .Title }}</a>
+        {{ end}}
       </nav>
     </div>
-    <h1 class="header__title">The Road Ahead</h1>
-    <p class="header__subtitle">The road ahead might be paved - it might not be.</p>
+    <h1 class="primary-title primary-title_dark">{{ .Title }}</h1>
+    <p class="primary-subtitle primary-subtitle_dark">The road ahead might be paved - it might not be.</p>
   </header>
-  <main class="main">
-    <img class="main__image" src="./images/lights.jpg" alt="lights">
-    <p class="main__text">
+  <main class="post">
+    <img class="post__image" src="/static/img/lights.jpg" alt="lights">
+    <p class="post__text">
       Dark spruce forest frowned on either side the frozen waterway. The trees had been stripped
       by a recent wind of their white covering of frost, and they seemed to lean towards each other,
       black and ominous, in the fading light. A vast silence reigned over the land. The land itself was
@@ -35,7 +33,7 @@
       the grimness of infallibility. It was the masterful and incommunicable wisdom of eternity laughing at
       the futility of life and the effort of life. It was the Wild, the savage, frozen-hearted Northland Wild.
     </p>
-    <p class="main__text">
+    <p class="post__text">
       But there was life, abroad in the land and defiant. Down the frozen waterway toiled a string of
       wolfish dogs. Their bristly fur was rimed with frost. Their breath froze in the air as it left their
       mouths, spouting forth in spumes of vapour that settled upon the hair of their bodies and formed into
@@ -46,7 +44,7 @@
       and narrow oblong box. There were other things on the sled—blankets, an axe, and a coffee-pot and
       frying-pan; but prominent, occupying most of the space, was the long and narrow oblong box.
     </p>
-    <p class="main__text">
+    <p class="post__text">
       In advance of the dogs, on wide snowshoes, toiled a man. At the rear of the sled toiled a second man. On the
       sled, in the box, lay a third man whose toil was over,—a man whom the Wild had conquered and beaten down
       until he would never move nor struggle again. It is not the way of the Wild to like movement. Life is an offence
@@ -55,7 +53,7 @@
       ferociously and terribly of all does the Wild harry and crush into submission man—man who is the most restless of life,
       ever in revolt against the dictum that all movement must in the end come to the cessation of movement.
     </p>
-    <p class="main__text">
+    <p class="post__text">
       But at front and rear, unawed and indomitable, toiled the two men who were not yet dead. Their bodies were
       covered with fur and soft-tanned leather. Eyelashes and cheeks and lips were so coated with the crystals
       from their frozen breath that their faces were not discernible. This gave them the seeming of ghostly
@@ -65,19 +63,18 @@
     </p>
   </main>
   <footer class="footer">
-    <h2 class="underlined-title underlined-title_light underlined-title_large">Stay in Touch</h2>
+    <h2 class="secondary-title secondary-title_light secondary-title_large">Stay in Touch</h2>
     <form class="contact-form" action="#">
       <input class="contact-form__field" type="text" placeholder="Enter your email address">
-      <input class="contact-form__button" type="submit" value="Submit">
+      <button class="contact-form__button" type="submit">Submit</button>
     </form>
-    <div class="footer__row">
-      <div class="footer-wrapper">
-        <img src="./images/logo-white.svg" alt="logo-white">
+    <div class="footer-wrapper">
+      <div class="footer__row row">
+        <img src="/static/img/logo-white.svg" alt="logo-white">
         <nav class="nav nav_footer">
-          <a class="nav__item" href="#">HOME</a>
-          <a class="nav__item" href="#">CATEGORIES</a>
-          <a class="nav__item" href="#">ABOUT</a>
-          <a class="nav__item" href="#">CONTACT</a>
+          {{ range .PrimaryLinks }}
+          <a class="nav__item" href="{{ .Url }}">{{ .Title }}</a>
+          {{ end }}
         </nav>
       </div>
     </div> 
