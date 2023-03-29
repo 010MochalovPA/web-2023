@@ -2,19 +2,15 @@ package main
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 )
-
-type linkData struct {
-	Title string
-	Url   string
-}
 
 type featuredPostData struct {
 	Title       string
 	Subtitle    string
 	ImgModifier string
-	Label       string
+	Category    string
 	Author      string
 	AuthorImg   string
 	PublishDate string
@@ -30,67 +26,13 @@ type mostRecentData struct {
 }
 
 type indexPageData struct {
-	Title          string
-	PrimaryLinks   []linkData
-	SecondaryLinks []linkData
-	FeaturedPosts  []featuredPostData
-	MostRecent     []mostRecentData
+	FeaturedPosts []featuredPostData
+	MostRecent    []mostRecentData
 }
 
 type postPageData struct {
-	Title        string
-	Subtitle     string
-	PrimaryLinks []linkData
-}
-
-func getPrimaryLinks() []linkData {
-	return []linkData{
-		{
-			Title: "Home",
-			Url:   "#",
-		},
-		{
-			Title: "Categories",
-			Url:   "#",
-		},
-		{
-			Title: "About",
-			Url:   "#",
-		},
-		{
-			Title: "Contact",
-			Url:   "#",
-		},
-	}
-}
-
-func getSecondaryLinks() []linkData {
-	return []linkData{
-		{
-			Title: "Nature",
-			Url:   "#",
-		},
-		{
-			Title: "Photography",
-			Url:   "#",
-		},
-		{
-			Title: "Relaxation",
-			Url:   "#",
-		},
-		{
-			Title: "Vacation",
-			Url:   "#",
-		},
-		{
-			Title: "Travel",
-			Url:   "#",
-		},
-		{
-			Title: "Adventure",
-			Url:   "#",
-		},
-	}
+	Title    string
+	Subtitle string
 }
 
 func getFeaturedPosts() []featuredPostData {
@@ -107,7 +49,7 @@ func getFeaturedPosts() []featuredPostData {
 			Title:       "From Top Down",
 			Subtitle:    "Once a year, go someplace you’ve never been before.",
 			ImgModifier: "featured-posts_balloon-image",
-			Label:       "adventure",
+			Category:    "Adventure",
 			Author:      "William Wong",
 			AuthorImg:   "/static/img/william.jpg",
 			PublishDate: "September 31, 2015",
@@ -124,7 +66,7 @@ func getFeaturedPosts() []featuredPostData {
 			Title:       "Behind the Northern Lights",
 			Subtitle:    "The road ahead might be paved - it might not be.",
 			ImgModifier: "featured-posts_light-image",
-			Label:       "Northern Lights",
+			Category:    "Nature",
 			Author:      "Mat Vogels",
 			AuthorImg:   "/static/img/mat.jpg",
 			PublishDate: "September 25, 2015",
@@ -190,21 +132,20 @@ func index(w http.ResponseWriter, _ *http.Request) {
 
 	if err != nil {
 		http.Error(w, "Internal Server Error", 500)
+		log.Println(err.Error())
 		return
 	}
 
 	data := indexPageData{
-		Title:          "Escape.",
-		PrimaryLinks:   getPrimaryLinks(),
-		SecondaryLinks: getSecondaryLinks(),
-		FeaturedPosts:  getFeaturedPosts(),
-		MostRecent:     getMostRecent(),
+		FeaturedPosts: getFeaturedPosts(),
+		MostRecent:    getMostRecent(),
 	}
 
 	err = tmpl.Execute(w, data)
 
 	if err != nil {
 		http.Error(w, "Internal Server Error", 500)
+		log.Println(err.Error())
 		return
 	}
 }
@@ -214,19 +155,20 @@ func post(w http.ResponseWriter, _ *http.Request) {
 
 	if err != nil {
 		http.Error(w, "Internal Server Error", 500)
+		log.Println(err.Error())
 		return
 	}
 
 	data := postPageData{
-		Title:        "The Road Ahead",
-		Subtitle:     "The road ahead might be paved - it might not be",
-		PrimaryLinks: getPrimaryLinks(),
+		Title:    "The Road Ahead",
+		Subtitle: "The road ahead might be paved - it might not be",
 	}
 
 	err = tmpl.Execute(w, data)
 
 	if err != nil {
 		http.Error(w, "Internal Server Error", 500)
+		log.Println(err.Error())
 		return
 	}
 }

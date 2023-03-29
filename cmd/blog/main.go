@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -11,8 +12,14 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/home", index)
 	mux.HandleFunc("/post", post)
-	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 
-	fmt.Println("start server")
-	http.ListenAndServe(port, mux)
+	FileServer := http.FileServer(http.Dir("./static"))
+	mux.Handle("/static/", http.StripPrefix("/static/", FileServer))
+
+	fmt.Println("start server " + port)
+
+	err := http.ListenAndServe(port, mux)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

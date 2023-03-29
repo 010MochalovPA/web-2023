@@ -158,7 +158,6 @@
   color: #768088;
 }
 
-
 .main-section {
   display: flex;
   justify-content: center;
@@ -230,7 +229,7 @@
   margin-bottom: 6px;
 }
 
-.large-card__label {
+.large-card__category {
   position: absolute;
   left: 20px;
   top: 20px;

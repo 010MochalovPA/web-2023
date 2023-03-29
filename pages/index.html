@@ -6,16 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400&family=Oxygen:wght@400&family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/styles.css">
-  <title>{{ .Title }}</title>
+  <title>Escape.</title>
 </head>
 <body>
   <header class="header header_background header_home">
     <div class="row header__row">
       <img src="/static/img/logo-white.svg" alt="logo-white">
       <nav class="nav nav_header nav_light">
-        {{ range .PrimaryLinks }}
-        <a class="nav__item" href="{{ .Url }}">{{ .Title }}</a>
-        {{ end }}
+        <a class="nav__item" href="#">home</a>
+        <a class="nav__item" href="#">category</a>
+        <a class="nav__item" href="#">about</a>
+        <a class="nav__item" href="#">contact</a>
       </nav>
     </div>
     <h1 class="primary-title primary-title_light">Let's do it together.</h1>
@@ -24,16 +25,19 @@
   </header>
   <main class="main">
     <nav class="main-nav">
-      {{ range .SecondaryLinks }}
-      <a class="main-nav__item" href="{{ .Url }}">{{ .Title }}</a>
-      {{ end}}
+      <a class="main-nav__item" href="#">Nature</a>
+      <a class="main-nav__item" href="#">Photography</a>
+      <a class="main-nav__item" href="#">Relaxation</a>
+      <a class="main-nav__item" href="#">Vacation</a>
+      <a class="main-nav__item" href="#">Travel</a>
+      <a class="main-nav__item" href="#">Adventure</a>
     </nav>
     <section class="main-section featured-posts">
       <h2 class="secondary-title secondary-title_dark">Featured Posts</h2>
       {{ range .FeaturedPosts}}
       <div class="featured-posts__card large-card {{ .ImgModifier }}">
-        {{ if .Label }}
-          <span class="large-card__label">{{ .Label }}</span>
+        {{ if .Category }}
+          <span class="large-card__category">{{ .Category }}</span>
         {{ end}}
         <h4 class="large-card__title">{{ .Title }}</h4>
         <p class="large-card__subtitle">{{ .Subtitle }}</p>
@@ -71,9 +75,10 @@
       <div class="footer__row row">
         <img src="/static/img/logo-white.svg" alt="logo-white">
         <nav class="nav nav_footer">
-          {{ range .PrimaryLinks }}
-          <a class="nav__item" href="{{ .Url }}">{{ .Title }}</a>
-          {{ end }}
+          <a class="nav__item" href="№">home</a>
+          <a class="nav__item" href="№">category</a>
+          <a class="nav__item" href="№">about</a>
+          <a class="nav__item" href="№">contact</a>
         </nav>
       </div>
     </div> 

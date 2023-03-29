@@ -13,9 +13,10 @@
     <div class="row header__row">
       <img src="/static/img/logo-black.svg" alt="logo-black">
       <nav class="nav nav_header nav_dark">
-        {{ range .PrimaryLinks}}
-          <a class="nav__item" href="#">{{ .Title }}</a>
-        {{ end}}
+        <a class="nav__item" href="#">home</a>
+        <a class="nav__item" href="#">category</a>
+        <a class="nav__item" href="#">about</a>
+        <a class="nav__item" href="#">contact</a>
       </nav>
     </div>
     <h1 class="primary-title primary-title_dark">{{ .Title }}</h1>
@@ -72,9 +73,10 @@
       <div class="footer__row row">
         <img src="/static/img/logo-white.svg" alt="logo-white">
         <nav class="nav nav_footer">
-          {{ range .PrimaryLinks }}
-          <a class="nav__item" href="{{ .Url }}">{{ .Title }}</a>
-          {{ end }}
+          <a class="nav__item" href="#">home</a>
+          <a class="nav__item" href="#">category</a>
+          <a class="nav__item" href="#">about</a>
+          <a class="nav__item" href="#">contact</a>
         </nav>
       </div>
     </div> 
