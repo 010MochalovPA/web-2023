@@ -126,6 +126,7 @@
 
 .post__image
 {
+  object-fit:cover;
   width: 100%;
   max-height: 534px;
   margin-bottom: 140px;
@@ -211,16 +212,6 @@
   max-width: 460px;
   border-radius: 3px;
   padding: 158px 20px 15px 20px;
-}
-
-.featured-posts_light-image {
-  background: url('../img/light.jpg') no-repeat;
-  background-size: cover;
-}
-
-.featured-posts_balloon-image {
-  background: url('../img/balloon.jpg') no-repeat;
-  background-size: cover;
 }
 
 .large-card__title {

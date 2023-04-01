@@ -1,28 +1,32 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
+	"strings"
+
+	"github.com/jmoiron/sqlx"
 )
 
 type featuredPostData struct {
-	Title       string
-	Subtitle    string
-	ImgModifier string
-	Category    string
-	Author      string
-	AuthorImg   string
-	PublishDate string
+	Title       string  `db:"title"`
+	Subtitle    string  `db:"subtitle"`
+	Img         string  `db:"img"`
+	Category    *string `db:"category"`
+	Author      string  `db:"author"`
+	AuthorImg   string  `db:"author_img"`
+	PublishDate string  `db:"publish_date"`
 }
 
 type mostRecentData struct {
-	Title       string
-	Subtitle    string
-	CardImg     string
-	Author      string
-	AuthorImg   string
-	PublishDate string
+	Title       string `db:"title"`
+	Subtitle    string `db:"subtitle"`
+	Img         string `db:"img"`
+	Author      string `db:"author"`
+	AuthorImg   string `db:"author_img"`
+	PublishDate string `db:"publish_date"`
 }
 
 type indexPageData struct {
@@ -31,144 +35,150 @@ type indexPageData struct {
 }
 
 type postPageData struct {
-	Title    string
-	Subtitle string
+	Title    string `db:"title"`
+	Subtitle string `db:"subtitle"`
+	Img      string `db:"img"`
+	Text     string `db:"text"`
 }
 
-func getFeaturedPosts() []featuredPostData {
-	return []featuredPostData{
-		{
-			Title:       "The Road Ahead",
-			Subtitle:    "The road ahead might be paved - it might not be.",
-			ImgModifier: "featured-posts_light-image",
-			Author:      "Mat Vogels",
-			AuthorImg:   "/static/img/mat.jpg",
-			PublishDate: "September 25, 2015",
-		},
-		{
-			Title:       "From Top Down",
-			Subtitle:    "Once a year, go someplace you’ve never been before.",
-			ImgModifier: "featured-posts_balloon-image",
-			Category:    "Adventure",
-			Author:      "William Wong",
-			AuthorImg:   "/static/img/william.jpg",
-			PublishDate: "September 31, 2015",
-		},
-		{
-			Title:       "Launching Air Lanterns",
-			Subtitle:    "Once a year, go someplace you’ve never been before.",
-			ImgModifier: "featured-posts_balloon-image",
-			Author:      "William Wong",
-			AuthorImg:   "/static/img/william.jpg",
-			PublishDate: "October 7, 2016",
-		},
-		{
-			Title:       "Behind the Northern Lights",
-			Subtitle:    "The road ahead might be paved - it might not be.",
-			ImgModifier: "featured-posts_light-image",
-			Category:    "Nature",
-			Author:      "Mat Vogels",
-			AuthorImg:   "/static/img/mat.jpg",
-			PublishDate: "September 25, 2015",
-		},
-	}
-}
+func getPostData(db *sqlx.DB, id int) (postPageData, error) {
+	query := fmt.Sprintf(`
+		SELECT
+			title,
+			subtitle,
+			img,
+			text
+		FROM
+			post
+		WHERE post_id = %d
+	`, id)
 
-func getMostRecent() []mostRecentData {
-	return []mostRecentData{
-		{
-			Title:       "Still Standing Tall",
-			Subtitle:    "Life begins at the end of your comfort zone.",
-			CardImg:     "/static/img/balloons.jpg",
-			Author:      "William Wong",
-			AuthorImg:   "/static/img/william.jpg",
-			PublishDate: "September 25, 2015",
-		},
-		{
-			Title:       "Sunny Side Up",
-			Subtitle:    "No place is ever as bad as they tell you it’s going to be.",
-			CardImg:     "/static/img/bridge.jpg",
-			Author:      "Mat Vogels",
-			AuthorImg:   "/static/img/mat.jpg",
-			PublishDate: "September 26, 2013",
-		},
-		{
-			Title:       "Water Falls",
-			Subtitle:    "We travel not to escape life, but for life not to escape us.",
-			CardImg:     "/static/img/river.jpg",
-			Author:      "Mat Vogels",
-			AuthorImg:   "/static/img/mat.jpg",
-			PublishDate: "September 26, 2013",
-		},
-		{
-			Title:       "Through the Mist",
-			Subtitle:    "Travel makes you see what a tiny place you occupy in the world.",
-			CardImg:     "/static/img/sea.jpg",
-			Author:      "William Wong",
-			AuthorImg:   "/static/img/william.jpg",
-			PublishDate: "September 23, 2011",
-		},
-		{
-			Title:       "Awaken Early",
-			Subtitle:    "Not all those who wander are lost.",
-			CardImg:     "/static/img/wires.jpg",
-			Author:      "Mat Vogels",
-			AuthorImg:   "/static/img/mat.jpg",
-			PublishDate: "September 26, 2013",
-		},
-		{
-			Title:       "Try it Always",
-			Subtitle:    "The world is a book, and those who do not travel read only one page.",
-			CardImg:     "/static/img/waterfall.jpg",
-			Author:      "Mat Vogels",
-			AuthorImg:   "/static/img/mat.jpg",
-			PublishDate: "September 26, 2013",
-		},
-	}
-}
+	var post postPageData
 
-func index(w http.ResponseWriter, _ *http.Request) {
-	tmpl, err := template.ParseFiles("pages/index.html")
-
+	err := db.Get(&post, query)
 	if err != nil {
-		http.Error(w, "Internal Server Error", 500)
-		log.Println(err.Error())
-		return
+		return postPageData{}, err
 	}
 
-	data := indexPageData{
-		FeaturedPosts: getFeaturedPosts(),
-		MostRecent:    getMostRecent(),
-	}
+	return post, nil
+}
 
-	err = tmpl.Execute(w, data)
+func getFeaturedPosts(db *sqlx.DB) ([]featuredPostData, error) {
+	const query = `
+		SELECT
+			title,
+			subtitle,
+			img,
+			(SELECT name FROM categories WHERE id = post.category_id) AS category,
+			publish_date,
+			(SELECT name FROM users WHERE id = post.user_id) AS author,
+			(SELECT img FROM users WHERE id = post.user_id) AS author_img
+		FROM
+			post
+		WHERE featured = 1
+	`
 
+	var posts []featuredPostData
+
+	err := db.Select(&posts, query)
 	if err != nil {
-		http.Error(w, "Internal Server Error", 500)
-		log.Println(err.Error())
-		return
+		return nil, err
+	}
+
+	return posts, nil
+}
+
+func getMostRecentPosts(db *sqlx.DB) ([]mostRecentData, error) {
+	const query = `
+		SELECT
+			title,
+			subtitle,
+			img,
+			publish_date,
+			(SELECT name FROM users WHERE id = post.user_id) AS author,
+			(SELECT img FROM users WHERE id = post.user_id) AS author_img
+		FROM
+			post
+		WHERE featured IS NULL
+	`
+
+	var posts []mostRecentData
+
+	err := db.Select(&posts, query)
+	if err != nil {
+		return nil, err
+	}
+
+	return posts, nil
+}
+
+func index(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		featuredPosts, err := getFeaturedPosts(db)
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err)
+			return
+		}
+
+		mostRecentPosts, err := getMostRecentPosts(db)
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err)
+			return
+		}
+
+		tmpl, err := template.ParseFiles("pages/index.html")
+
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err.Error())
+			return
+		}
+
+		data := indexPageData{
+			FeaturedPosts: featuredPosts,
+			MostRecent:    mostRecentPosts,
+		}
+
+		err = tmpl.Execute(w, data)
+
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err.Error())
+			return
+		}
 	}
 }
 
-func post(w http.ResponseWriter, _ *http.Request) {
-	tmpl, err := template.ParseFiles("pages/post.html")
+func post(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
 
-	if err != nil {
-		http.Error(w, "Internal Server Error", 500)
-		log.Println(err.Error())
-		return
-	}
+		post, err := getPostData(db, 5)
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err)
+			return
+		}
 
-	data := postPageData{
-		Title:    "The Road Ahead",
-		Subtitle: "The road ahead might be paved - it might not be",
-	}
+		funcMap := template.FuncMap{
+			"splitText": strings.Split,
+		}
 
-	err = tmpl.Execute(w, data)
+		tmpl, err := template.New("post.html").Funcs(funcMap).ParseFiles("pages/post.html")
 
-	if err != nil {
-		http.Error(w, "Internal Server Error", 500)
-		log.Println(err.Error())
-		return
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err.Error())
+			return
+		}
+
+		err = tmpl.Execute(w, post)
+
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err.Error())
+			return
+		}
 	}
 }

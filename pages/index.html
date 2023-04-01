@@ -35,7 +35,7 @@
     <section class="main-section featured-posts">
       <h2 class="secondary-title secondary-title_dark">Featured Posts</h2>
       {{ range .FeaturedPosts}}
-      <div class="featured-posts__card large-card {{ .ImgModifier }}">
+      <div class="featured-posts__card large-card" style="background: url('{{ .Img }}') no-repeat; ">
         {{ if .Category }}
           <span class="large-card__category">{{ .Category }}</span>
         {{ end}}
@@ -53,7 +53,7 @@
       <h2 class="secondary-title secondary-title_dark">Most Recent</h2>
       {{ range .MostRecent}}
       <div class="most-recent__card small-card">
-        <img class="small-card-image" src="{{ .CardImg }}" alt="{{ .Title }}">
+        <img class="small-card-image" src="{{ .Img }}" alt="{{ .Title }}">
         <h5 class="small-card__title">{{ .Title }}</h5>
         <p class="small-card__subtitle">{{ .Subtitle }}</p>
         <div class="about about_small-card">

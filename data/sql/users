@@ -1,0 +1,4 @@
+INSERT INTO users (name, img)
+VALUES
+  ('Mat Vogels', '/static/img/mat.jpg'),
+  ('William Wong', '/static/img/william.jpg');

@@ -1,0 +1,8 @@
+INSERT INTO categories (name)
+VALUES
+  ('Nature'),
+  ('Photography'),
+  ('Relaxation'),
+  ('Vacation'),
+  ('Travel'),
+  ('Adventure');

@@ -1,0 +1,36 @@
+CREATE TABLE users
+(
+  `id`      INT NOT NULL AUTO_INCREMENT,
+  `name`    TINYTEXT NOT NULL,
+  `img`     TINYTEXT NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+CHARACTER SET = utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+CREATE TABLE categories
+(
+  `id`      INT NOT NULL AUTO_INCREMENT,
+  `name`    TINYTEXT NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+CHARACTER SET = utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+CREATE TABLE post
+(
+  `post_id`      INT NOT NULL AUTO_INCREMENT,
+  `title`        TINYTEXT NOT NULL,
+  `subtitle`     TINYTEXT NOT NULL,
+  `img`          TINYTEXT NOT NULL,
+  `text`         TEXT NOT NULL,
+  `category_id`  INT,
+  `publish_date` TINYTEXT NOT NULL,
+  `user_id`      INT NOT NULL,
+  `featured` TINYINT(1),
+  foreign key(category_id) references categories(id),
+  foreign key(user_id) references users(id),
+  PRIMARY KEY (`post_id`)
+) ENGINE = InnoDB
+CHARACTER SET = utf8mb4
+COLLATE utf8mb4_unicode_ci;
