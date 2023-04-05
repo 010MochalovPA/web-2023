@@ -20,7 +20,7 @@ type featuredPostData struct {
 	PublishDate string  `db:"publish_date"`
 }
 
-type mostRecentData struct {
+type mostRecentPostData struct {
 	Title       string `db:"title"`
 	Subtitle    string `db:"subtitle"`
 	Img         string `db:"img"`
@@ -29,17 +29,19 @@ type mostRecentData struct {
 	PublishDate string `db:"publish_date"`
 }
 
-type indexPageData struct {
-	FeaturedPosts []featuredPostData
-	MostRecent    []mostRecentData
-}
-
 type postPageData struct {
 	Title    string `db:"title"`
 	Subtitle string `db:"subtitle"`
 	Img      string `db:"img"`
 	Text     string `db:"text"`
 }
+
+type indexPageData struct {
+	FeaturedPosts   []featuredPostData
+	MostRecentPosts []mostRecentPostData
+}
+
+const postIndex = 6
 
 func getPostData(db *sqlx.DB, id int) (postPageData, error) {
 	query := fmt.Sprintf(`
@@ -88,7 +90,7 @@ func getFeaturedPosts(db *sqlx.DB) ([]featuredPostData, error) {
 	return posts, nil
 }
 
-func getMostRecentPosts(db *sqlx.DB) ([]mostRecentData, error) {
+func getMostRecentPosts(db *sqlx.DB) ([]mostRecentPostData, error) {
 	const query = `
 		SELECT
 			title,
@@ -102,7 +104,7 @@ func getMostRecentPosts(db *sqlx.DB) ([]mostRecentData, error) {
 		WHERE featured IS NULL
 	`
 
-	var posts []mostRecentData
+	var posts []mostRecentPostData
 
 	err := db.Select(&posts, query)
 	if err != nil {
@@ -137,8 +139,8 @@ func index(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 		}
 
 		data := indexPageData{
-			FeaturedPosts: featuredPosts,
-			MostRecent:    mostRecentPosts,
+			FeaturedPosts:   featuredPosts,
+			MostRecentPosts: mostRecentPosts,
 		}
 
 		err = tmpl.Execute(w, data)
@@ -154,7 +156,7 @@ func index(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 func post(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
-		post, err := getPostData(db, 5)
+		post, err := getPostData(db, postIndex)
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
 			log.Println(err)
@@ -162,7 +164,7 @@ func post(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 		}
 
 		funcMap := template.FuncMap{
-			"splitText": strings.Split,
+			"split": strings.Split,
 		}
 
 		tmpl, err := template.New("post.html").Funcs(funcMap).ParseFiles("pages/post.html")

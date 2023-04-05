@@ -24,7 +24,7 @@
   </header>
   <main class="post">
     <img class="post__image" src="{{ .Img }}" alt="lights">
-    {{ range splitText .Text "\n"}}
+    {{ range split .Text "\n"}}
       <p class="post__text">
         {{ . }}
       </p>
