@@ -208,10 +208,17 @@
 }
 
 .large-card {
+  cursor: pointer;
   position: relative;
   max-width: 460px;
   border-radius: 3px;
   padding: 158px 20px 15px 20px;
+  background-size: 100%;
+  transition: all 0.2s;
+}
+
+.large-card:hover {
+  transform: scale(0.99);
 }
 
 .large-card__title {
