@@ -38,7 +38,7 @@
       <h2 class="secondary-title secondary-title_dark">Featured Posts</h2>
       {{ range .FeaturedPosts}}
       <div class="featured-posts__card large-card" style="background: url('{{ .Img }}') no-repeat;"
-          onclick="window.location.href = 'http://localhost:3000/post?id={{ .Id }}';">
+          onclick="window.location.href = '{{ .PostURL }}';">
         {{ if .Category }}
         <span class="large-card__category">{{ .Category }}</span>
         {{ end}}
@@ -55,7 +55,7 @@
     <section class="main-section most-recent">
       <h2 class="secondary-title secondary-title_dark">Most Recent</h2>
       {{ range .MostRecentPosts}}
-      <div class="most-recent__card small-card" onclick="window.location.href = 'http://localhost:3000/post?id={{ .Id }}';">
+      <div class="most-recent__card small-card" onclick="window.location.href = '{{ .PostURL }}';">
         <img class="small-card-image" src="{{ .Img }}" alt="{{ .Title }}">
         <h5 class="small-card__title">{{ .Title }}</h5>
         <p class="small-card__subtitle">{{ .Subtitle }}</p>
