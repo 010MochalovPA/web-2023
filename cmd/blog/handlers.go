@@ -12,14 +12,14 @@ import (
 )
 
 type featuredPostData struct {
-	Id          string  `db:"post_id"`
-	Title       string  `db:"title"`
-	Subtitle    string  `db:"subtitle"`
-	Img         string  `db:"img"`
-	Category    *string `db:"category"`
-	Author      string  `db:"author"`
-	AuthorImg   string  `db:"author_img"`
-	PublishDate string  `db:"publish_date"`
+	Id          string `db:"post_id"`
+	Title       string `db:"title"`
+	Subtitle    string `db:"subtitle"`
+	Img         string `db:"img"`
+	Category    string `db:"category"`
+	Author      string `db:"author"`
+	AuthorImg   string `db:"author_img"`
+	PublishDate string `db:"publish_date"`
 	PostURL     string
 }
 
@@ -76,7 +76,7 @@ func getFeaturedPosts(db *sqlx.DB) ([]*featuredPostData, error) {
 			title,
 			subtitle,
 			img,
-			(SELECT name FROM categories WHERE id = post.category_id) AS category,
+			category,
 			publish_date,
 			(SELECT name FROM users WHERE id = post.user_id) AS author,
 			(SELECT img FROM users WHERE id = post.user_id) AS author_img

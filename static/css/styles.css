@@ -208,7 +208,6 @@
 }
 
 .large-card {
-  cursor: pointer;
   position: relative;
   max-width: 460px;
   border-radius: 3px;
@@ -225,6 +224,11 @@
   font: 27px/1.11 'Lora', serif;
   color: #ffffff;
   margin-bottom: 6px;
+  text-decoration: none;
+}
+
+.large-card__title:hover {
+  opacity: 0.8;
 }
 
 .large-card__category {
@@ -291,8 +295,14 @@
 
 .small-card__title {
   color: #101315;
+  text-decoration: none;
   font: 16px/1.31 'Lora', serif;
   margin: 13px 0 0 13px;
+  opacity: 1;
+}
+
+.small-card__title:hover {
+  opacity: 0.8;
 }
 
 .small-card__subtitle {
