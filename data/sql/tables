@@ -1,13 +1,3 @@
-CREATE TABLE users
-(
-  `id`      INT NOT NULL AUTO_INCREMENT,
-  `name`    TINYTEXT NOT NULL,
-  `img`     TINYTEXT NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE = InnoDB
-CHARACTER SET = utf8mb4
-COLLATE utf8mb4_unicode_ci;
-
 CREATE TABLE post
 (
   `post_id`      INT NOT NULL AUTO_INCREMENT,
@@ -17,9 +7,9 @@ CREATE TABLE post
   `text`         TEXT NOT NULL,
   `category`     TINYTEXT NOT NULL,
   `publish_date` TINYTEXT NOT NULL,
-  `user_id`      INT NOT NULL,
-  `featured` TINYINT(1),
-  foreign key(user_id) references users(id),
+  `author`       TINYTEXT NOT NULL,
+  `authorImg`    TINYTEXT NOT NULL,
+  `featured`     TINYINT(1),
   PRIMARY KEY (`post_id`)
 ) ENGINE = InnoDB
 CHARACTER SET = utf8mb4

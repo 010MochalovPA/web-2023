@@ -23,7 +23,7 @@
     </div>
     <h1 class="primary-title primary-title_light">Let's do it together.</h1>
     <p class="primary-subtitle">We travel the world in search of stories. Come along for the ride.</p>
-    <button class="primary-button">View Latest Posts</button>
+    <button class="primary-button primary-button_center">View Latest Posts</button>
   </header>
   <main class="main">
     <nav class="main-nav">
@@ -37,11 +37,12 @@
     <section class="main-section featured-posts">
       <h2 class="secondary-title secondary-title_dark">Featured Posts</h2>
       {{ range .FeaturedPosts}}
-      <div class="featured-posts__card large-card" style="background: url('{{ .Img }}') no-repeat; background-size: cover;">
+      <div class="featured-posts__card large-card" style="background: url('{{ .Img }}') no-repeat; background-size: cover;"
+      onclick="window.location.href = '/post/{{ .Id }}';">
         {{ if .Category }}
         <span class="large-card__category">{{ .Category }}</span>
         {{ end}}
-        <a href="{{ .PostURL }}" class="large-card__title">{{ .Title }}</a>
+        <h4 class="large-card__title">{{ .Title }}</h4>
         <p class="large-card__subtitle">{{ .Subtitle }}</p>
         <div class="about about_transparent">
           <img class="about__photo" src="{{ .AuthorImg }}" alt="{{ .Author }}">
@@ -54,9 +55,9 @@
     <section class="main-section most-recent">
       <h2 class="secondary-title secondary-title_dark">Most Recent</h2>
       {{ range .MostRecentPosts}}
-      <div class="most-recent__card small-card">
+      <div class="most-recent__card small-card" onclick="window.location.href = '/post/{{ .Id }}';">
         <img class="small-card-image" src="{{ .Img }}" alt="{{ .Title }}">
-        <a href="{{ .PostURL }}" class="small-card__title">{{ .Title }}</a>
+        <h5 class="small-card__title">{{ .Title }}</h5>
         <p class="small-card__subtitle">{{ .Subtitle }}</p>
         <div class="about about_small-card">
           <img class="about__photo" src="{{ .AuthorImg }}" alt="{{ .Author }}">

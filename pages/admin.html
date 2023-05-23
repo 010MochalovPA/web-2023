@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <title>Admin</title>
+</head>
+<body>
+  <header class="admin-header">
+    <div class="admin-header-row">
+      <img src="/static/img/Logo-author.svg" alt="logo-author">
+      <div class="admin-header-menu">
+        <img class="admin-header-avatar" src="/static/img/Avatar.svg" alt="avatar">
+        <img class="admin-header-logout" src="/static/img/log-out.svg" alt="log-out">
+      </div>
+    </div>
+  </header>
+  <main class="admin-main">
+    <div class="wrapper">
+      <div class="admin-main__top">
+        <div class="title-block">
+          <div class="admin-title">New Post</div>
+          <div class="admin-subtitle">Fill out the form bellow and publish your article</div>
+        </div>
+        <button class="primary-button admin-button">Publish</button>
+      </div>
+      <div class="main-info main-block">
+        <div class="main-info__form">
+          <div class="admin-subtitle-block">Main Information</div>
+          <div class="field">
+            <label class="input-label" for="title">Title</label>
+            <input class="input-field" id="title" maxlength="30" type="text">
+          </div>
+          <div class="field">
+            <label class="input-label" for="description">Short description</label>
+            <input class="input-field" id="description" maxlength="70" type="text">
+          </div>
+          <div class="field">
+            <label class="input-label" for="author-name">Author name</label>
+            <input class="input-field" id="author-name" maxlength="25" type="text">
+          </div>
+          <div class="field">
+            <span class="input-label">Author Photo</span>
+            <div class="row-left">
+              <div class="upload-photo__preview author-photo preview-img-camera img-empty"></div>
+              <label class="upload-photo" for="photo">
+                <div class="new-upload">
+                  <img class="camera-icon hidden" src="/static/img/camera.svg" alt="camera">
+                  <span class="upload-photo__text photo-upload-text">Upload</span>
+                </div>
+              </label>
+              <div class="remove-upload hidden">
+                <img class="trash-icon" src="/static/img/trash-2.svg" alt="trash">
+                <span class="upload-photo__text_red">Remove</span>
+              </div>
+            </div>
+            <input id="photo" class="input-file hidden" type="file"> 
+          </div>
+          <div class="field">
+            <label class="input-label" for="publish-date">Publish Date</label>
+            <input class="input-field" id="publish-date" required type="date">
+          </div> 
+          <div class="field">
+            <span class="input-label">Hero Image</span>
+            <label class="upload-hero-image" for="large-hero-img">
+              <div class="upload-hero-image__preview preview-post-img_large preview-img img-empty_large preview-post-img"></div>
+            </label>
+            <input id="large-hero-img" class="input-file hidden" type="file">
+            <span class="upload-info upload-info_large">Size up to 10mb. Format: png, jpeg, gif.</span>
+            <div class="remove-upload-block remove-upload-block-large">
+              <label class="upload-photo" for="large-hero-img">
+                <div class="new-upload">
+                  <img class="camera-icon" src="/static/img/camera.svg" alt="camera">
+                  <span class="upload-photo__text large-img-upload-text">Upload New</span>
+                </div>
+              </label>
+              <div class="remove-upload remove-upload-large-img">
+                <img class="trash-icon" src="/static/img/trash-2.svg" alt="trash">
+                <span class="upload-photo__text_red">Remove</span>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <span class="input-label" for="hero-image">Hero Image</span>
+            <label class="upload-hero-image" for="small-hero-img">
+              <div class="upload-hero-image__preview preview-post-img_small img-empty_small small-preview-img"></div>
+            </label>
+            <input id="small-hero-img" class="input-file hidden" type="file">
+            <span class="upload-info upload-info_small">Size up to 5mb. Format: png, jpeg, gif.</span>
+            <div class="remove-upload-block remove-upload-block-small">
+              <label class="upload-photo" for="small-hero-img">
+                <div class="new-upload">
+                  <img class="camera-icon" src="/static/img/camera.svg" alt="camera">
+                  <span class="upload-photo__text small-img-upload-text">Upload New</span>
+                </div>
+              </label>
+              <div class="remove-upload remove-upload-small-img">
+                <img class="trash-icon" src="/static/img/trash-2.svg" alt="trash">
+                <span class="upload-photo__text_red">Remove</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main-info__preview">
+          <span class="preview-title">Article preview</span>
+          <div class="article-preview">
+            <div class="large-device-preview">
+              <div class="large-device-preview__screen">
+                <div class="screen-header">
+                  <img src="/static/img/dot.svg" alt="dot">
+                  <img src="/static/img/dot.svg" alt="dot">
+                  <img src="/static/img/dot.svg" alt="dot">
+                </div>
+                <span class="large-device-preview__title preview-post-title">New Post</span>
+                <span class="large-device-preview__subtitle preview-post-decsription">Please, enter any description</span>
+                <div class="large-device-preview__preview-img preview-img preview-post-img"></div>
+              </div>
+            </div>
+            <div class="shadow"></div>
+          </div>
+          <span class="preview-title">Article preview</span>
+          <div class="post-card-preview">
+            <div class="small-card-preview">
+              <div class="small-card-preview__card">
+                <div class="small-card-preview-image preview-img small-preview-img"></div>
+                <h5 class="small-card-preview__title preview-post-title">New Post</h5>
+                <p class="small-card-preview__subtitle preview-post-decsription">Please, enter any description</p>
+                <div class="about about_small-card">
+                  <div class="small-card-preview_about-photo preview-img author-photo"></div>
+                  <span class="about__name preview-post-author-name">Enter author name</span>
+                  <span class="about__date preview-date">4/19/2023</span>
+                </div>
+              </div>
+            </div>
+            <div class="shadow"></div>
+          </div>
+        </div>
+      </div>
+      <div class="content main-block">
+        <div class="admin-subtitle-block">Content</div>
+        <div class="field">
+          <label class="input-label" for="text-field-content">Post content (plain text)</label>
+          <textarea class="input-field text-area" id="text-field-content" placeholder="Type anything you want ..."></textarea>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+<script src="/static/js/admin.js"></script>
+</html>
