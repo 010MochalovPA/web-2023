@@ -65,7 +65,7 @@ func createPost(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 		body, err := io.ReadAll(r.Body)
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
-			log.Println("1")
+			log.Println(err)
 			return
 		}
 
@@ -74,56 +74,56 @@ func createPost(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 		err = json.Unmarshal(body, &req)
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
-			log.Println("2")
+			log.Println(err)
 			return
 		}
 
 		imgAuthor, err := base64.StdEncoding.DecodeString(strings.Split(req.AuthorImg, "base64,")[1])
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
-			log.Println("3")
+			log.Println(err)
 			return
 		}
 
 		fileAuthor, err := os.Create("static/img/" + req.AuthorImgName)
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
-			log.Println("4")
+			log.Println(err)
 			return
 		}
 
 		_, err = fileAuthor.Write(imgAuthor)
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
-			log.Println("5")
+			log.Println(err)
 			return
 		}
 
 		imgPost, err := base64.StdEncoding.DecodeString(strings.Split(req.PostImg, "base64,")[1])
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
-			log.Println("6")
+			log.Println(err)
 			return
 		}
 
 		filePost, err := os.Create("static/img/" + req.PostImgName)
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
-			log.Println("7")
+			log.Println(err)
 			return
 		}
 
 		_, err = filePost.Write(imgPost)
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
-			log.Println("8")
+			log.Println(err)
 			return
 		}
 
 		err = savePost(db, req)
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
-			log.Println("9")
+			log.Println(err)
 			return
 		}
 
@@ -135,18 +135,7 @@ func savePost(db *sqlx.DB, req createPostRequest) error {
 	const query = `
 	INSERT INTO post (title, subtitle, img, text, category, publish_date, author, authorImg, featured)
 	VALUES
-	  (
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?, 
-		?,
-		0
-	  )
-	`
+	  (?, ?, ?, ?, ?, ?, ?, ?, 0)`
 	_, err := db.Exec(query, req.Title, req.Subtitle, "/static/img/"+req.PostImgName, req.Content, "", req.PublishDate, req.Author, "/static/img/"+req.AuthorImgName)
 	return err
 }
@@ -286,7 +275,7 @@ func post(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		postIDStr := mux.Vars(r)["postID"]
 
-		postID, err := strconv.Atoi(postIDStr) // Конвертируем строку orderID в число
+		postID, err := strconv.Atoi(postIDStr)
 		if err != nil {
 			http.Error(w, "Invalid order id", 403)
 			log.Println(err)

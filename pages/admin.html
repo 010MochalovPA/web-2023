@@ -26,20 +26,24 @@
         </div>
         <button class="primary-button admin-button">Publish</button>
       </div>
+      <div class="notification"></div>
       <div class="main-info main-block">
         <div class="main-info__form">
           <div class="admin-subtitle-block">Main Information</div>
           <div class="field">
             <label class="input-label" for="title">Title</label>
             <input class="input-field" id="title" maxlength="30" type="text">
+            <span class="error"></span>
           </div>
           <div class="field">
             <label class="input-label" for="description">Short description</label>
             <input class="input-field" id="description" maxlength="70" type="text">
+            <span class="error"></span>
           </div>
           <div class="field">
             <label class="input-label" for="author-name">Author name</label>
             <input class="input-field" id="author-name" maxlength="25" type="text">
+            <span class="error"></span>
           </div>
           <div class="field">
             <span class="input-label">Author Photo</span>
@@ -55,12 +59,14 @@
                 <img class="trash-icon" src="/static/img/trash-2.svg" alt="trash">
                 <span class="upload-photo__text_red">Remove</span>
               </div>
+              <span class="error"></span>
             </div>
             <input id="photo" class="input-file hidden" type="file"> 
           </div>
           <div class="field">
             <label class="input-label" for="publish-date">Publish Date</label>
             <input class="input-field" id="publish-date" required type="date">
+            <span class="error"></span>
           </div> 
           <div class="field">
             <span class="input-label">Hero Image</span>
@@ -81,6 +87,7 @@
                 <span class="upload-photo__text_red">Remove</span>
               </div>
             </div>
+            <span class="error"></span>
           </div>
           <div class="field">
             <span class="input-label" for="hero-image">Hero Image</span>
@@ -101,6 +108,7 @@
                 <span class="upload-photo__text_red">Remove</span>
               </div>
             </div>
+            <span class="error"></span>
           </div>
         </div>
         <div class="main-info__preview">
@@ -143,6 +151,7 @@
         <div class="field">
           <label class="input-label" for="text-field-content">Post content (plain text)</label>
           <textarea class="input-field text-area" id="text-field-content" placeholder="Type anything you want ..."></textarea>
+          <span class="error"></span>
         </div>
       </div>
     </div>

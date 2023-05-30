@@ -16,6 +16,8 @@ window.onload = () => {
   const postDescriptionInput = document.getElementById('description');
   const authorNameInput = document.getElementById('author-name');
   const publishDateInput = document.getElementById('publish-date');
+  const notification = document.querySelector('.notification');
+  const fields = document.querySelectorAll('.field');
 
   const postDescriptionsPreviews = document.querySelectorAll('.preview-post-decsription');
   const authorNamePreviews = document.querySelectorAll('.preview-post-author-name');
@@ -51,20 +53,101 @@ window.onload = () => {
   removeSmallPreviewImg.addEventListener('click', () => removePostImg(SmallImgsPreviews, 'small'));
 
   publishButton.addEventListener('click', async () => {
-    console.log(data);
+    if (invalidFields(data)){
+      showError(notification);
+      markInvalidValue(fields);
+      return;
+    }
+
     await fetch('api/post', {
       method: 'POST',
       body: JSON.stringify(data),
+    }).then((res)=>{
+      if (res.ok) {
+        showSuccess(notification);
+        clearFields(inputs);
+        return;
+      }
+      showError(notification);
+    }).catch(() => {
+      showError(notification);
     });
   })
 
   content.addEventListener('input', () => {
+    if (content.classList.contains('incorrect')) {
+      content.classList.remove('incorrect')
+    }
     data.content = content.value;
   })
-  
 }
 
+const markInvalidValue = (fields) => {
+  fields.forEach(field => {
+    const error = field.querySelector('.error');
+    const input = field.querySelector('.input-field');
+    if (!error || !input) {
+      return;
+    }
+    error.innerHTML = '';
+    input.classList.remove('incorrect');
+    if (!field.querySelector('.input-field').value) {
+      const label = field.querySelector('.input-label');
+      error.innerHTML = `${label.innerHTML} is required`;
+      input.classList.add('incorrect');
+      setTimeout(() => {
+        error.innerHTML = '';
+        input.classList.remove('incorrect');
+      }, 5000);
+      return;
+    } 
+  })
+}
+
+const clearFields = (inputs) => {
+  inputs.forEach(input => {
+    input.value = "";
+  })
+}
+
+const invalidFields = (data) => {
+  for (const key in data) { //same
+    if (!data[key]) return true;
+  }
+  return false;
+}
+
+const showSuccess = (notificationElement) => {
+  if (notificationElement.classList.contains('notification_red')) {
+    notificationElement.classList.remove('notification_red');
+  }
+  notificationElement.innerHTML = 'Publish Complete!';
+  notificationElement.classList.add('notification_green');
+  setTimeout(()=> {
+    hideNotification(notificationElement);
+  }, 5000);
+};
+
+const showError = (notificationElement) => { //raf
+  if (notificationElement.classList.contains('notification_green')) {
+    notificationElement.classList.remove('notification_green');
+  }
+  notificationElement.innerHTML = 'Whoops! Some fields need your attention :o';
+  notificationElement.classList.add('notification_red');
+  setTimeout(()=> {
+    hideNotification(notificationElement);
+  }, 5000);
+};
+
+const hideNotification = (notificationElement) => {
+  notificationElement.classList.remove('notification_red');
+  notificationElement.classList.remove('notification_green');
+};
+
 const changeDate = (publishDate, previewDate) => {
+  if (publishDate.classList.contains('incorrect')) {
+    publishDate.classList.remove('incorrect')
+  }
   const date = new Date(publishDate.value);
   const day = date.getDate();
   const month = date.getMonth();
@@ -74,6 +157,9 @@ const changeDate = (publishDate, previewDate) => {
 }
 
 const inputTitle = (postTitleInput, postTitlePreviews) => {
+  if (postTitleInput.classList.contains('incorrect')) {
+    postTitleInput.classList.remove('incorrect')
+  }
   postTitlePreviews.forEach(title => {
     postTitleInput.value ? title.innerHTML = postTitleInput.value : title.innerHTML = 'New Post';
   });
@@ -81,6 +167,9 @@ const inputTitle = (postTitleInput, postTitlePreviews) => {
 }
 
 const inputDescription = (postDescription, postDescriptionsPreviews) => {
+  if (postDescription.classList.contains('incorrect')) {
+    postDescription.classList.remove('incorrect')
+  }
   postDescriptionsPreviews.forEach(description => {
     postDescription.value ? description.innerHTML = postDescription.value : description.innerHTML = 'Please, enter any description';
   });
@@ -88,6 +177,9 @@ const inputDescription = (postDescription, postDescriptionsPreviews) => {
 }
 
 const inputAuthorName = (authorName, authorNamePreviews) => {
+  if (authorName.classList.contains('incorrect')) {
+    authorName.classList.remove('incorrect')
+  }
   authorNamePreviews.forEach(name => {
     authorName.value ? name.innerHTML = authorName.value : name.innerHTML = 'Enter author name';
   });
@@ -157,7 +249,7 @@ const previewPostImg = (postImgLarge, PostImgPreviews, modifier) => {
   }
 }
 
-const removeAuthorPhoto = (authorPhotoInput, previewAuthorPhotos, removeAuthorPhotoElement, field) => {
+const removeAuthorPhoto = (authorPhotoInput, previewAuthorPhotos, removeAuthorPhotoElement) => {
   authorPhotoInput.value = '';
   document.querySelector('.camera-icon').classList.add('hidden');
   removeAuthorPhotoElement.classList.add('hidden');

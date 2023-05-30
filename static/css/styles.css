@@ -159,6 +159,7 @@
   font: 24px/1.45 'Oxygen', sans-serif;
   color: #101315;
   margin-bottom: 50px;
+  word-break: break-all;
 }
 
 .main-nav {
@@ -331,6 +332,7 @@
 
 .small-card-image {
   display: block;
+  height: 150px;
 }
 
 .footer {
@@ -805,4 +807,52 @@
   display: none;
   align-items: center;
   gap: 17px;
+}
+
+.notification {
+  position: relative; 
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font: 14px/1.78 'Oxygen', sans-serif;
+  transition: all 0.3s;
+  height: 0;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+  padding-left: 46px;
+}
+
+.notification_red {
+  background: #FFEBEA; 
+  border-left: 2px solid #E86961;
+  height: 44px;
+}
+
+.notification_red::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  background: url('/static/img/alert-circle.svg');
+}
+
+.notification_green {
+  background: #E6FCEF;
+  border-left: 2px solid #67C48C;
+  height: 44px;
+}
+
+.notification_green::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: calc(50% - 12px);
+  left: 14px;
+  background: url('/static/img/check-circle.svg');
 }
